@@ -39,6 +39,15 @@ if settings.download_dir.exists():
     )
 
 
+@app.get("/")
+def root() -> Dict[str, Any]:
+    return {
+        "service": "yt-dlp Audio API",
+        "status": "ok",
+        "endpoints": {"health": "/health", "download": "/download", "docs": "/docs"},
+    }
+
+
 @app.get("/health")
 def health() -> Dict[str, Any]:
     return {
